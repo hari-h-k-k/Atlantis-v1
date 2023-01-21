@@ -8,7 +8,6 @@ import javax.persistence.*;
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", nullable = false)
     private Long id;
 
     public Long getId() {
