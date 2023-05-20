@@ -4,6 +4,7 @@ For Turf Owners
 As an owner, I want to register my Turf in the App.
 As an owner, I want to view history of bookings and payments.
 As an owner, I want to review the comments.
+As an owner, I want to host events.
 
 For Users
 As an user, I want to create an account.
