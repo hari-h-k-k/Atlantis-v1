@@ -67,22 +67,32 @@ def insert_dummy_data():
     db = get_db()
     cursor = db.cursor()
 
-    # Insert dummy data
-    user_data = [
-        ('John Doe', 'john@example.com'),
-        ('Jane Smith', 'jane@example.com')
-    ]
-    product_data = [
-        ('Product 1', 10.99),
-        ('Product 2', 19.99),
-        ('Product 3', 5.99)
-    ]
+    # Check if users table is empty
+    cursor.execute('SELECT COUNT(*) FROM users')
+    user_count = cursor.fetchone()[0]
 
-    insert_user_query = 'INSERT INTO users (name, email) VALUES (%s, %s)'
-    cursor.executemany(insert_user_query, user_data)
+    if user_count == 0:
+        # Insert dummy data
+        user_data = [
+            ('John Doe', 'john@example.com'),
+            ('Jane Smith', 'jane@example.com')
+        ]
+        insert_user_query = 'INSERT INTO users (name, email) VALUES (%s, %s)'
+        cursor.executemany(insert_user_query, user_data)
 
-    insert_product_query = 'INSERT INTO products (name, price) VALUES (%s, %s)'
-    cursor.executemany(insert_product_query, product_data)
+    # Check if products table is empty
+    cursor.execute('SELECT COUNT(*) FROM products')
+    product_count = cursor.fetchone()[0]
+
+    if product_count == 0:
+        # Insert dummy data
+        product_data = [
+            ('Product 1', 10.99),
+            ('Product 2', 19.99),
+            ('Product 3', 5.99)
+        ]
+        insert_product_query = 'INSERT INTO products (name, price) VALUES (%s, %s)'
+        cursor.executemany(insert_product_query, product_data)
 
     db.commit()
     cursor.close()
