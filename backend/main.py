@@ -1,6 +1,5 @@
 from flask import Flask
 import pymysql
-# import mysqlclient
 
 app = Flask(__name__)
 
